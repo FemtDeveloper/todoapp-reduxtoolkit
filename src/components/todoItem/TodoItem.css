@@ -1,0 +1,63 @@
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  min-height: 180px;
+  background-color: white;
+  border: solid 2px rgb(133, 133, 133);
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+.todo-container h1 {
+  display: flex;
+  align-self: flex-start;
+  margin: 20px;
+  color: rgb(2, 50, 122);
+}
+.todo-container p {
+  text-align: center;
+  margin: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  word-break: break-word;
+  color: rgb(36, 36, 36);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  margin: 20px 5px 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+.done {
+  background-color: rgb(42, 190, 42);
+  border: none;
+}
+.notDone {
+  background-color: white;
+  color: green;
+  border-color: green;
+}
+.remove {
+  background-color: rgb(245, 72, 60);
+  border: none;
+}
+.edit {
+  background-color: rgb(16, 128, 255);
+  border: none;
+}
+
+@media screen and (min-width: 780px) {
+  .btn {
+    width: 27%;
+  }
+}

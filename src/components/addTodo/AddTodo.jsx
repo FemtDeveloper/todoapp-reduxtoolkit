@@ -4,17 +4,29 @@ import { saveTodo } from "../../features/todoSlice";
 import TodoList from "../todoList/TodoList";
 import "./AddTodo.css";
 
-const AddTodo = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [error, setError] = useState(false);
+const initialFormValues = {
+  title: "",
+  description: "",
+};
 
+const AddTodo = () => {
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const { title, description } = formValues;
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
+
+  const handleInputChanges = (e) => {
+    const changedFormValues = {
+      ...formValues,
+      [e.target.name]: e.target.value,
+    };
+    setFormValues(changedFormValues);
+  };
+
   const add = () => {
     if (title.trim() === "" || description.trim() === "") {
       setError(true);
     } else {
-      console.log(`Adding ${title} and ${description}`);
       dispatch(
         saveTodo({
           title,
@@ -23,8 +35,7 @@ const AddTodo = () => {
         })
       );
       setError(false);
-      setTitle("");
-      setDescription("");
+      setFormValues(initialFormValues);
     }
   };
   return (
@@ -36,22 +47,23 @@ const AddTodo = () => {
         )}
         <input
           type="text"
-          placeholder="Insert Title"
-          onChange={(e) => setTitle(e.target.value)}
-          className="addTodo-container--input"
           value={title}
+          placeholder="Insert Title"
+          onChange={handleInputChanges}
+          className="addTodo-container--input"
+          name="title"
         />
         <textarea
-          name="tarea"
+          name="description"
           value={description}
           id=""
           cols="30"
           rows="5"
           placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleInputChanges}
           className="addTodo-container--textarea"
         ></textarea>
-        <button onClick={add} className="btn">
+        <button onClick={add} className="btn-addTodo">
           Add
         </button>
       </div>

@@ -6,8 +6,6 @@ import "./TodoList.css";
 const TodoList = () => {
   const todoList = useSelector((state) => state.todos);
 
-  console.log(todoList);
-
   return (
     <div className="todoList--container">
       {todoList.map((todo) => {
